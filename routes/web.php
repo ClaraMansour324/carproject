@@ -38,9 +38,15 @@ Route::get('testimonils',[PageController::class,'testimonials'])->name('testimon
 
 //admin routes ------> car
 Route::get('cars',[CarController::class,'index'])->name('cars');
+
 Route::get('addcar',[CarController::class,'create'])->name('addcar');
 route::post('storecar',[CarController:: class, 'store'])->name('storecar');
 Route::post('uploadfile', [CarController::class, 'upload']);
+
+route::get('destroy/{id}',[CarController::class,'destroy'])->name('destroy'); 
+
+route::get('editcar/{id}',[CarController:: class, 'edit'])->name('editcar');
+route::put('update/{id}',[CarController::class,'update'])->name('update');
 
 // admin routes --------> testimonials
 

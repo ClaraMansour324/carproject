@@ -9,6 +9,7 @@ use App\Traits\Common;
 
 class CarController extends Controller
 {
+    use Common;
     /**
      * Display a listing of the resource.
      */
@@ -62,9 +63,9 @@ class CarController extends Controller
      */
     public function edit(string $id)
     {
-        $car = Car::findOrFail($id);
+        $cars = Car::findOrFail($id);
         $categories = Category::get();
-        return view('editcar',compact('car','categories'));
+        return view('admin/editCar',compact('cars','categories'));
     }
 
     /**
@@ -72,7 +73,28 @@ class CarController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $messages = $this->messages();
+        $data = $request->validate([
+             'title'=>'nullable|string|max:50',
+             'description'=> 'required|string',
+             'luggage'=> 'required|integer',
+             'doors'=> 'required|integer',
+             'passengers'=> 'required|integer',
+             'price'=> 'required|integer',
+             'image' => 'nullable|mimes:png,jpg,jpeg|max:2048',
+             'category_id' => 'required|exists:categories,id',
+             'cat_name'=>'nullable|string|max:50',
+            ], $messages);
+
+         if($request->hasFile('image')){
+            $fileName = $this->uploadFile($request->image, 'assets/images');  
+            $data['image'] = $fileName;
+            // unlink("assets/images/" . $request->oldImageName);
+         }
+
+         $data['active'] = isset($request->active);
+         Car::where('id', $id)->update($data);
+        return redirect('cars');
     }
 
     /**
@@ -80,7 +102,14 @@ class CarController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        Car::where('id',$id)->delete();
+        return redirect('cars');
+    }
+
+    public function forceDelete(string $id)
+    {
+        Car::where('id',$id)->forceDelete();
+        return redirect('cars');
     }
 
     public function messages()
@@ -98,11 +127,4 @@ class CarController extends Controller
         ];
     }
 
-    public function uploadFile(Request $request){
-        $file_extension = $request->image->getClientOriginalExtension();
-        $file_name = time() . '.' . $file_extension;
-        $path = 'assets/images';
-        $request->image->move($path, $file_name);
-        return 'Uploaded';
-    }
 }

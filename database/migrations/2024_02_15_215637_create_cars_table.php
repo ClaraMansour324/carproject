@@ -14,11 +14,11 @@ return new class extends Migration
         Schema::create('cars', function (Blueprint $table) {
             $table->id();
             $table->string('title', 100);
-            $table->string('price');
+            $table->integer('price');
             $table->longText('description');
-            $table->number('Luggage',15);
-            $table->number('Doors',15);
-            $table->number('Passengers',15);
+            $table->integer('luggage',15);
+            $table->integer('doors',15);
+            $table->integer('passengers',15);
             $table->string('image', 100);
             $table->boolean('active'); 
             $table->foreignId('category_id')->constrained('categories');

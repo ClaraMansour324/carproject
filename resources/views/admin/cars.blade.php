@@ -1,4 +1,4 @@
-@extends('admin.layouts.showPages')
+@extends('admin.layouts.addPages')
 
 @section('content')
         <!-- page content -->
@@ -66,7 +66,7 @@
                               <td>{{ $car->price }}</td>
                               <td>{{ $car->active? "Yes" : "No" }}</td>
                               <td><a href="{{ route('editcar', ['id'=>$car->id]) }}">Edit</a></td>
-                              <td><a href="{{ route('deletecar', ['id'=>$car->id]) }}" onclick="return confirm('Are you sure?')">Delete</a></td>
+                              <td><a href="{{ route('destroy', ['id'=>$car->id]) }}" onclick="return confirm('Are you sure?')">Delete</a></td>
                           </tr>
                         @endforeach
                         
