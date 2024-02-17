@@ -76,14 +76,14 @@
                       <div class="d-flex justify-content-center">
                       {!! $cars->links() !!}
                       </div>
-                  </div>
-                  </div>
-              </div>
-            </div>
+                    </div>
+                   </div>
                 </div>
-              </div>
+             </div>
             </div>
           </div>
         </div>
-        <!-- /page content -->
+      </div>
+    </div>
+ <!-- /page content -->
 @endsection

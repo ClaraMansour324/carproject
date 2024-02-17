@@ -76,18 +76,27 @@
 											<div class="col-md-6 col-sm-6 ">
 												<input id="luggage" class="form-control" type="number" name="luggage" required="required">
 											</div>
+											@error('luggage')
+												{{ $message }}
+											@enderror
 										</div>
 										<div class="item form-group">
 											<label for="doors" class="col-form-label col-md-3 col-sm-3 label-align">Doors <span class="required">*</span></label>
 											<div class="col-md-6 col-sm-6 ">
 												<input id="doors" class="form-control" type="number" name="doors" required="required">
 											</div>
+											@error('doors')
+												{{ $message }}
+											@enderror
 										</div>
 										<div class="item form-group">
 											<label for="passengers" class="col-form-label col-md-3 col-sm-3 label-align">Passengers <span class="required">*</span></label>
 											<div class="col-md-6 col-sm-6 ">
 												<input id="passengers" class="form-control" type="number" name="passengers" required="required">
 											</div>
+											@error('passengers')
+												{{ $message }}
+											@enderror
 										</div>
 										<div class="item form-group">
 											<label for="price" class="col-form-label col-md-3 col-sm-3 label-align">Price <span class="required">*</span></label>
