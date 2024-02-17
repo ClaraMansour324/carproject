@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Car;
+use App\Models\Category;
+use App\Traits\Common;
 
 class CarController extends Controller
 {
@@ -11,7 +14,9 @@ class CarController extends Controller
      */
     public function index()
     {
-        //
+        $cars = Car::paginate(5);
+        return view('admin/cars', compact('cars'));
+
     }
 
     /**
@@ -19,7 +24,8 @@ class CarController extends Controller
      */
     public function create()
     {
-        //
+        $categories=Category::get();
+        return view('admin/addCar',compact('categories'));
     }
 
     /**
@@ -27,7 +33,20 @@ class CarController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $messages = $this->messages();
+        $data = $request->validate([
+            'title'=>'required|string|max:50',
+            'price'=>'required|string|max:50',
+            'description'=> 'required|string',
+            'image' => 'required|mimes:png,jpg,jpeg|max:2048',
+            'category_id'=>'required|string|max:50',
+           ], $messages);
+           $fileName = $this->uploadFile($request->image, 'assets/images');  
+           $data['image'] = $fileName;
+           
+       $data['active'] = isset($request->active);
+       Car::create($data);
+       return redirect('cars');
     }
 
     /**
@@ -43,7 +62,9 @@ class CarController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $car = Car::findOrFail($id);
+        $categories = Category::get();
+        return view('editcar',compact('car','categories'));
     }
 
     /**
@@ -75,5 +96,13 @@ class CarController extends Controller
 
 
         ];
+    }
+
+    public function uploadFile(Request $request){
+        $file_extension = $request->image->getClientOriginalExtension();
+        $file_name = time() . '.' . $file_extension;
+        $path = 'assets/images';
+        $request->image->move($path, $file_name);
+        return 'Uploaded';
     }
 }

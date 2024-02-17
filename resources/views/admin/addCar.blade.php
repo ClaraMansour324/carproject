@@ -49,20 +49,27 @@
 								</div>
 								<div class="x_content">
 									<br />
-									<form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
+									<form action="{{ route('storecar') }}" method="post" enctype="multipart/form-data" id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
+									@csrf
 										<div class="item form-group">
-											<label class="col-form-label col-md-3 col-sm-3 label-align" for="title">Title <span class="required">*</span>
+											<label class="col-form-label col-md-3 col-sm-3 label-align" for="title">{{ __('messages.formTitle') }} <span class="required">*</span>
 											</label>
 											<div class="col-md-6 col-sm-6 ">
-												<input type="text" id="title" required="required" class="form-control ">
+												<input type="text" id="title" required="required" class="form-control "  name="title">
 											</div>
+											@error('title')
+												{{ $message }}
+											@enderror
 										</div>
 										<div class="item form-group">
-											<label class="col-form-label col-md-3 col-sm-3 label-align" for="content">Content <span class="required">*</span>
+											<label class="col-form-label col-md-3 col-sm-3 label-align" for="content">description <span class="required">*</span>
 											</label>
 											<div class="col-md-6 col-sm-6 ">
-												<textarea id="content" name="content" required="required" class="form-control">Contents</textarea>
+												<textarea id="content" name="description" required="required" class="form-control" placeholder="Enter the description">  </textarea>
 											</div>
+											@error('description')
+												{{ $message }}
+											@enderror
 										</div>
 										<div class="item form-group">
 											<label for="luggage" class="col-form-label col-md-3 col-sm-3 label-align">Luggage <span class="required">*</span></label>
@@ -87,12 +94,15 @@
 											<div class="col-md-6 col-sm-6 ">
 												<input id="price" class="form-control" type="number" name="price" required="required">
 											</div>
+											@error('price')
+												{{ $message }}
+											@enderror
 										</div>
 										<div class="item form-group">
 											<label class="col-form-label col-md-3 col-sm-3 label-align">Active</label>
 											<div class="checkbox">
 												<label>
-													<input type="checkbox" class="flat">
+													<input type="checkbox" class="flat" name="active">
 												</label>
 											</div>
 										</div>
@@ -102,16 +112,20 @@
 											<div class="col-md-6 col-sm-6 ">
 												<input type="file" id="image" name="image" required="required" class="form-control">
 											</div>
+											@error('image')
+												{{ $message }}
+											@enderror
 										</div>
 
 										<div class="item form-group">
-											<label class="col-form-label col-md-3 col-sm-3 label-align" for="title">Category <span class="required">*</span>
+											<label class="col-form-label col-md-3 col-sm-3 label-align" for="category">Category <span class="required">*</span>
 											</label>
 											<div class="col-md-6 col-sm-6 ">
-												<select class="form-control" name="category" id="">
+												<select class="form-control" name="category_id" id="">
 													<option value=" ">Select Category</option>
-													<option value="cat1">Category 1</option>
-													<option value="cat2">Category 2</option>
+													@foreach($categories as $category)
+														<option value="{{ $category->id }}" >{{ $category->cat_name }}</option>
+													@endforeach
 												</select>
 											</div>
 										</div>

@@ -60,30 +60,22 @@
 
 
                       <tbody>
-                        <tr>
-                          <td>Car 10</td>
-                          <td>250</td>
-                          <td>Yes</td>
-                          <td><img src="./images/edit.png" alt="Edit"></td>
-                          <td><img src="./images/delete.png" alt="Delete"></td>
-                        </tr>
-                        <tr>
-                          <td>Car 1</td>
-                          <td>150</td>
-                          <td>Yes</td>
-                          <td><img src="./images/edit.png" alt="Edit"></td>
-                          <td><img src="./images/delete.png" alt="Delete"></td>
-                        </tr>
-                        <tr>
-                          <td>Car 2</td>
-                          <td>200</td>
-                          <td>Yes</td>
-                          <td><img src="./images/edit.png" alt="Edit"></td>
-                          <td><img src="./images/delete.png" alt="Delete"></td>
-                        </tr>
+                        @foreach($cars as $car)
+                          <tr>
+                              <td>{{ $car->title }}</td>
+                              <td>{{ $car->price }}</td>
+                              <td>{{ $car->active? "Yes" : "No" }}</td>
+                              <td><a href="{{ route('editcar', ['id'=>$car->id]) }}">Edit</a></td>
+                              <td><a href="{{ route('deletecar', ['id'=>$car->id]) }}" onclick="return confirm('Are you sure?')">Delete</a></td>
+                          </tr>
+                        @endforeach
                         
                       </tbody>
                     </table>
+                    <!-- Pagination -->
+                      <div class="d-flex justify-content-center">
+                      {!! $cars->links() !!}
+                      </div>
                   </div>
                   </div>
               </div>
