@@ -61,7 +61,6 @@
                             <tr>
                                 <td>{{ $message->full_name }}</td>
                                 <td>{{ $message->email }}</td>
-                                <td>{{ $message->message}}</td>
                                 <td><a href="{{ route('showmessage', ['id'=>$message->id]) }}">Edit</a></td>
                                 <td><a href="{{ route('destroymessage', ['id'=>$message->id]) }}" onclick="return confirm('Are you sure?')">Delete</a></td>
                             </tr>
