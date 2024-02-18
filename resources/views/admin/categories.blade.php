@@ -1,4 +1,4 @@
-@extends('admin.layouts.showPages')
+@extends('admin.layouts.addPages')
 
 
 @section('content')
@@ -59,17 +59,13 @@
 
 
                       <tbody>
-                        <tr>
-                          <td>Category</td>
-                          <td><img src="./images/edit.png" alt="Edit"></td>
-                          <td><img src="./images/delete.png" alt="Delete"></td>
-                        </tr>
-                        <tr>
-                          <td>Category</td>
-                          <td><img src="./images/edit.png" alt="Edit"></td>
-                          <td><img src="./images/delete.png" alt="Delete"></td>
-                        </tr>
-                        
+                        @foreach($categories as $category)
+                            <tr>
+                                <td>{{ $category->cat_name }}</td>
+                                <td><a href="{{ route('editcategory', ['id'=>$category->id]) }}">Edit</a></td>
+                                <td><a href="{{ route('destroycategory', ['id'=>$category->id]) }}" onclick="return confirm('Are you sure?')">Delete</a></td>
+                            </tr>
+                        @endforeach
                       </tbody>
                     </table>
                   </div>

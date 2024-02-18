@@ -43,11 +43,20 @@ Route::get('addcar',[CarController::class,'create'])->name('addcar');
 route::post('storecar',[CarController:: class, 'store'])->name('storecar');
 Route::post('uploadfile', [CarController::class, 'upload']);
 
-route::get('destroy/{id}',[CarController::class,'destroy'])->name('destroy'); 
+route::get('destroycar/{id}',[CarController::class,'destroy'])->name('destroycar'); 
 
 route::get('editcar/{id}',[CarController:: class, 'edit'])->name('editcar');
-route::put('update/{id}',[CarController::class,'update'])->name('update');
+route::put('updatecar/{id}',[CarController::class,'update'])->name('updatecar');
 
 // admin routes --------> testimonials
 
-// admin routes ---------> 
+// admin routes ---------> categories
+Route::get('categories',[CategoryController::class,'index'])->name('categories');
+
+Route::get('addcategory',[CategoryController::class,'create'])->name('addcategory');
+Route::post('storecategory',[CategoryController::class,'store'])->name('storecategory');
+
+route::get('destroycategory/{id}',[CategoryController::class,'destroy'])->name('destroycategory'); 
+
+route::get('editcategory/{id}',[CategoryController:: class, 'edit'])->name('editcategory');
+route::put('updatecategory/{id}',[CategoryController::class,'update'])->name('updatecategory');

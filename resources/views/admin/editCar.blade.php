@@ -49,7 +49,7 @@
 								</div>
 								<div class="x_content">
 									<br />
-									<form action="{{ route('update',$cars->id) }}" enctype="multipart/form-data" method="post" id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
+									<form action="{{ route('updatecar',$cars->id) }}" enctype="multipart/form-data" method="post" id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
 										@csrf
    										@method('put')	
 										<div class="item form-group">

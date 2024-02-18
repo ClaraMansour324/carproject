@@ -4,7 +4,7 @@
  edit Category
 @endsection
 
-@sectiont('content')
+@section('content')
 			<!-- page content -->
 			<div class="right_col" role="main">
 				<div class="">
@@ -49,14 +49,18 @@
 								</div>
 								<div class="x_content">
 									<br />
-									<form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
-
+									<form action="{{ route('updatecategory',$categories->id) }}" enctype="multipart/form-data" method="post" id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
+										@csrf
+										@method('put')
 										<div class="item form-group">
 											<label class="col-form-label col-md-3 col-sm-3 label-align" for="add-category">Edit Category <span class="required">*</span>
 											</label>
 											<div class="col-md-6 col-sm-6 ">
-												<input type="text" id="add-category" required="required" class="form-control ">
+												<input type="text" id="add-category" required="required" class="form-control" name="cat_name" value="{{$categories->cat_name}}">
 											</div>
+											@error('cat_name')
+												{{ $message }}
+											@enderror
 										</div>
 										
 										<div class="ln_solid"></div>

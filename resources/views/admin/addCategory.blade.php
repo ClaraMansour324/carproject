@@ -50,14 +50,17 @@
 								</div>
 								<div class="x_content">
 									<br />
-									<form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
-
+									<form action="{{ route('storecategory') }}" method="post" enctype="multipart/form-data" id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
+										@csrf
 										<div class="item form-group">
 											<label class="col-form-label col-md-3 col-sm-3 label-align" for="add-category">Add Category <span class="required">*</span>
 											</label>
 											<div class="col-md-6 col-sm-6 ">
-												<input type="text" id="add-category" required="required" class="form-control ">
+												<input type="text" id="add-category" name="cat_name" required="required" class="form-control ">
 											</div>
+											@error('cat_name')
+												{{ $message }}
+											@enderror
 										</div>
 										
 										<div class="ln_solid"></div>
@@ -76,6 +79,15 @@
 
 				</div>
 			</div>
+			@if ($errors->any())
+				<div class="alert alert-danger">
+					<ul>
+						@foreach ($errors->all() as $error)
+							<li>{{ $error }}</li>
+						@endforeach
+					</ul>
+				</div>
+			@endif
 			<!-- /page content -->
 @endsection
 
