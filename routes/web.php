@@ -49,6 +49,12 @@ route::get('editcar/{id}',[CarController:: class, 'edit'])->name('editcar');
 route::put('updatecar/{id}',[CarController::class,'update'])->name('updatecar');
 
 // admin routes --------> testimonials
+route::get('testimonials',[TestimonialController:: class, 'index'])->name('testimonials');
+route::get('edittestimonials/{id}',[TestimonialController:: class, 'edit'])->name('edittestimonials');
+Route::get('addtestimonials',[TestimonialController::class,'create'])->name('addtestimonials');
+route::post('storetestimonials',[TestimonialController:: class, 'store'])->name('storetestimonials');
+route::get('destroytestimonials/{id}',[TestimonialController:: class, 'destroy'])->name('destroytestimonials');
+route::put('updatetestimonials/{id}',[TestimonialController:: class, 'update'])->name('updatetestimonials');
 
 // admin routes ---------> categories
 Route::get('categories',[CategoryController::class,'index'])->name('categories');

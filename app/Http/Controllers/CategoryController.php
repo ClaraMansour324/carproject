@@ -39,7 +39,7 @@ class CategoryController extends Controller
          ], $messages);
             
         Category::create($data);
-        return view('admin/categories');
+        return redirect('categories');
     }
 
     /**

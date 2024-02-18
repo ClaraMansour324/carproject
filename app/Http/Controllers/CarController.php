@@ -50,7 +50,7 @@ class CarController extends Controller
            
        $data['active'] = isset($request->active);
        Car::create($data);
-       return redirect('admin/cars');
+       return redirect('cars');
     }
 
     /**

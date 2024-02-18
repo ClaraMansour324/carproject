@@ -21,17 +21,17 @@
 										<li><a href="{{ route('cars') }}">Cars List</a></li>
 									</ul>
 								</li>
-                <li><a><i class="fa fa-desktop"></i> Testimonials <span class="fa fa-chevron-down"></span></a>
-									<ul class="nav child_menu">
-										<li><a href="addTestimonials.html">Add Testimonials</a></li>
-										<li><a href="testimonials.html">Edit Testimonials</a></li>
-									</ul>
-								</li>
-                <li><a><i class="fa fa-desktop"></i> Messages <span class="fa fa-chevron-down"></span></a>
-									<ul class="nav child_menu">
-										<li><a href="messages.html">Messages</a></li>
-									</ul>
-								</li>
+								<li><a><i class="fa fa-desktop"></i> Testimonials <span class="fa fa-chevron-down"></span></a>
+													<ul class="nav child_menu">
+														<li><a href="{{ route('addtestimonials') }}">Add Testimonials</a></li>
+														<li><a href="{{ route('testimonials') }}">Testimonials list</a></li>
+													</ul>
+												</li>
+								<li><a><i class="fa fa-desktop"></i> Messages <span class="fa fa-chevron-down"></span></a>
+													<ul class="nav child_menu">
+														<li><a href="messages.html">Messages</a></li>
+													</ul>
+												</li>
 							</ul>
 						</div>
 

@@ -1,4 +1,8 @@
-@extends('admin.layouts.showPages')
+@extends('admin.layouts.editPages')
+
+@section('title')
+ Testimonials
+@endsection
 
 @section('content')
         <!-- page content -->
@@ -52,38 +56,29 @@
                         <tr>
                           <th>Name</th>
                           <th>Position</th>
+                          <th>content</th>
                           <th>Published</th>
                           <th>Edit</th>
                           <th>Delete</th>
                         </tr>
                       </thead>
                       <tbody>
-                        <tr>
-                          <td>Car 10</td>
-                          <td>250</td>
-                          <td>Yes</td>
-                          <td><img src="./images/edit.png" alt="Edit"></td>
-                          <td><img src="./images/delete.png" alt="Delete"></td>
-                        </tr>
-                        <tr>
-                          <td>Car 1</td>
-                          <td>150</td>
-                          <td>Yes</td>
-                          <td><img src="./images/edit.png" alt="Edit"></td>
-                          <td><img src="./images/delete.png" alt="Delete"></td>
-                        </tr>
-                        <tr>
-                          <td>Car 2</td>
-                          <td>200</td>
-                          <td>Yes</td>
-                          <td><img src="./images/edit.png" alt="Edit"></td>
-                          <td><img src="./images/delete.png" alt="Delete"></td>
-                        </tr>
-                        
+                        @foreach($testimonials as $testimonial)
+                            <tr>
+                                <td>{{ $testimonial->name }}</td>
+                                <td>{{ $testimonial->position }}</td>
+                                <td>{{ $testimonial->content }}</td>
+                                <td>{{ $testimonial->published? "Yes" : "No" }}</td>
+                                <td><a href="{{ route('edittestimonials', ['id'=>$testimonial->id]) }}">Edit</a></td>
+                                <td><a href="{{ route('destroytestimonials', ['id'=>$testimonial->id]) }}" onclick="return confirm('Are you sure?')">Delete</a></td>
+                            </tr>
+                        @endforeach
                       </tbody>
                     </table>
                   </div>
                   </div>
+                  <div class="d-flex justify-content-center"> {{ $testimonials->links() }} </div>
+
               </div>
             </div>
                 </div>

@@ -16,9 +16,9 @@ return new class extends Migration
             $table->string('title', 100);
             $table->longText('description');
             $table->string('price');
-            $table->string('luggage',15);
-            $table->string('doors',15);
-            $table->string('passengers',15);
+            $table->string('luggage')->default(2);
+            $table->string('doors',15)->default(4);
+            $table->string('passengers',15)->default(4);
             $table->string('image', 100);
             $table->boolean('active'); 
             $table->foreignId('category_id')->constrained('categories');
