@@ -1,4 +1,4 @@
-@extends('admin.layouts.showPages')
+@extends('admin.layouts.editPages')
 
 @section('content')
         <!-- page content -->
@@ -69,8 +69,6 @@
                     </table>
                   </div>
                   </div>
-                  <div class="d-flex justify-content-center"> {{ $messages->links() }} </div>
-
               </div>
             </div>
                 </div>

@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('full_name');
             $table->string('email')->unique();
             $table->string('message');
+            $table->boolean('flag')->default(0);
             $table->timestamps();
         });
     }

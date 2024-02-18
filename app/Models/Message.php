@@ -12,5 +12,6 @@ class Message extends Model
         'full_name',
         'email',
         'message',
+        'flag',
     ];
 }

@@ -14,7 +14,7 @@ class MessageController extends Controller
      */
     public function index()
     {
-        $messages=Message::paginate(3);
+        $messages=Message::where('flag', 0)->get();
         return view('admin/messages',compact('messages'));
     }
 
@@ -39,7 +39,7 @@ class MessageController extends Controller
      */
     public function show(string $id)
     {
-        $messages = Message::findOrFail($id);
+        $messages = Message::where('id', $id)->update(['flag' => 1]);
         return view('showMessage',compact('messages')); 
     }
 
