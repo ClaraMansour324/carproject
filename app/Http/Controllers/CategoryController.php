@@ -70,7 +70,7 @@ class CategoryController extends Controller
             ], $messages);
 
         Category::where('id', $id)->update($data);
-        return view('admin/categories');
+        return redirect('categories');
     }
 
     /**
@@ -79,7 +79,7 @@ class CategoryController extends Controller
     public function destroy(string $id)
     {
         Category::where('id',$id)->delete();
-        return view('admin/categories');
+        return redirect('categories');
     }
 
     public function messages()

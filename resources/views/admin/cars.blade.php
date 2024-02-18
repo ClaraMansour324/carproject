@@ -72,12 +72,10 @@
                         
                       </tbody>
                     </table>
-                    <!-- Pagination -->
-                      <div class="d-flex justify-content-center">
-                      {!! $cars->links() !!}
-                      </div>
                     </div>
                    </div>
+                   <div class="d-flex justify-content-center"> {{ $cars->links() }} </div>
+
                 </div>
              </div>
             </div>
