@@ -57,29 +57,21 @@
                         </tr>
                       </thead>
                       <tbody>
-                        <tr>
-                          <td>First Name and Last Name</td>
-                          <td>mail@example.com</td>
-                          <td><img src="./images/edit.png" alt="Edit"></td>
-                          <td><img src="./images/delete.png" alt="Delete"></td>
-                        </tr>
-                        <tr>
-                          <td>First Name and Last Name</td>
-                          <td>mail@example.com</td>
-                          <td><img src="./images/edit.png" alt="Edit"></td>
-                          <td><img src="./images/delete.png" alt="Delete"></td>
-                        </tr>
-                        <tr>
-                          <td>First Name and Last Name</td>
-                          <td>mail@example.com</td>
-                          <td><img src="./images/edit.png" alt="Edit"></td>
-                          <td><img src="./images/delete.png" alt="Delete"></td>
-                        </tr>
-                        
+                        @foreach($messages as $message)
+                            <tr>
+                                <td>{{ $message->full_name }}</td>
+                                <td>{{ $message->email }}</td>
+                                <td>{{ $message->message}}</td>
+                                <td><a href="{{ route('showmessage', ['id'=>$message->id]) }}">Edit</a></td>
+                                <td><a href="{{ route('destroymessage', ['id'=>$message->id]) }}" onclick="return confirm('Are you sure?')">Delete</a></td>
+                            </tr>
+                          @endforeach
                       </tbody>
                     </table>
                   </div>
                   </div>
+                  <div class="d-flex justify-content-center"> {{ $messages->links() }} </div>
+
               </div>
             </div>
                 </div>

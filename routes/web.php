@@ -7,6 +7,8 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\homeController;
 use App\Http\Controllers\TestimonialController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\MessageController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -75,3 +77,9 @@ Route::post('storeuser',[UserController::class,'store'])->name('storeuser');
 
 Route::get('edituser/{id}',[UserController::class,'edit'])->name('edituser');
 Route::put('updateuser/{id}',[UserController::class,'update'])->name('updateuser');
+
+//admin routes ------------> messages
+Route::get('messages',[MessageController::class,'index'])->name('messages');
+Route::get('showmessage',[MessageController::class,'show'])->name('showmessage');
+Route::get('destroymessage/{id}',[MessageController::class,'destroy'])->name('destroymessage');
+
