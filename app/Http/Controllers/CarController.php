@@ -15,7 +15,7 @@ class CarController extends Controller
      */
     public function index()
     {
-        $cars = Car::paginate(1);
+        $cars = Car::paginate(3);
         return view('admin/cars', compact('cars'));
 
     }
@@ -128,6 +128,13 @@ class CarController extends Controller
 
 
         ];
+    }
+
+    public function siteindex()
+    {
+        $cars = Car::paginate(5);
+        return view('listing', compact('cars'));
+
     }
 
 }

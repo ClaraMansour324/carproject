@@ -38,7 +38,7 @@ class TestimonialController extends Controller
         $data = $request->validate([
          'name'=>'required|string|max:50',
          'position'=>'required|string|max:50',
-         'content'=>'required|string|max:50',
+         'content'=>'required|string',
          'image' => 'required|mimes:png,jpg,jpeg',
         ], $messages);
         $fileName = $this->uploadFile($request->image, 'assets/images');  
@@ -75,7 +75,7 @@ class TestimonialController extends Controller
         $data = $request->validate([
             'name'=>'required|string|max:50',
             'position'=>'required|string|max:50',
-            'content'=>'required|string|max:50',
+            'content'=>'required|string',
             'image' => 'required|mimes:png,jpg,jpeg',
             ], $messages);
 
@@ -112,5 +112,12 @@ class TestimonialController extends Controller
 
 
         ];
+    }
+
+    public function sitelisting()
+    {
+        $testimonials = Testimonial::paginate(5);
+        return view('listing', compact('testimonials'));
+
     }
 }

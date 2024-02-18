@@ -39,8 +39,8 @@ class PageController extends Controller
         return view("single");
     }
 
-    public function testimonials()
+    public function testimonial()
     {
-        return view("testimonials");
+        return view("testimonial");
     }
 }
