@@ -66,3 +66,12 @@ route::get('destroycategory/{id}',[CategoryController::class,'destroy'])->name('
 
 route::get('editcategory/{id}',[CategoryController:: class, 'edit'])->name('editcategory');
 route::put('updatecategory/{id}',[CategoryController::class,'update'])->name('updatecategory');
+
+//admin routes -----------> users
+Route::get('users',[UserController::class,'index'])->name('users');
+
+Route::get('adduser',[UserController::class,'create'])->name('adduser');
+Route::post('storeuser',[UserController::class,'store'])->name('storeuser');
+
+Route::get('edituser/{id}',[UserController::class,'edit'])->name('edituser');
+Route::put('updateuser/{id}',[UserController::class,'update'])->name('updateuser');
