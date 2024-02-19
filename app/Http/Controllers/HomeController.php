@@ -25,4 +25,20 @@ class HomeController extends Controller
     {
         return view('index');
     }
+
+    public function contact_mail_send(Request $request)
+    {
+        $data= $request->validate([
+            'full_name'=>'required|string|max:50',
+            'email'=>'required|string',
+            'user_name'=>'required|string',
+            'message'=>'required|string',
+        ]);
+        Contact:: create($data);
+        
+        Mail:: to('clara@example.com')->send(
+            new EmailsNotification($data)
+        );
+        return "mail sent!";
+    }
 }

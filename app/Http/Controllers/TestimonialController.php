@@ -114,10 +114,10 @@ class TestimonialController extends Controller
         ];
     }
 
-    public function sitelisting()
+    public function sitetestimonial()
     {
         $testimonials = Testimonial::paginate(5);
-        return view('listing', compact('testimonials'));
+        return view('testimonial', compact('testimonials'));
 
     }
 }

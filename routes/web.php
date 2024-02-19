@@ -5,9 +5,9 @@ use App\Http\Controllers\PageController;
 use App\Http\Controllers\CarController;
 // use App\Http\Controllers\CategoryController;
 // use App\Http\Controllers\homeController;
-// use App\Http\Controllers\TestimonialController;
+use App\Http\Controllers\TestimonialController;
 // use App\Http\Controllers\UserController;
-// use App\Http\Controllers\MessageController;
+use App\Http\Controllers\MessageController;
 
 
 /*
@@ -40,4 +40,10 @@ Route::get('testimonial',[PageController::class,'testimonial'])->name('testimoni
 
 
 Route::get('listing',[CarController::class,'siteindex'])->name('listing');
-Route::get('listingtest',[TestimonialController::class,'sitelisting'])->name('listingtest');
+Route::get('testimonial',[TestimonialController::class,'sitetestimonial'])->name('testimonial');
+
+Route::post('contactus',[MessageController::class,'store'])->name('contactus');
+
+route ::get('login', function(){
+    return view('login');
+})->name('logged');

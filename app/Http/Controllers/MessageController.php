@@ -31,8 +31,15 @@ class MessageController extends Controller
      */
     public function store(Request $request)
     {
-        //
+      
+        $messages = new Message();
+        $messages->full_name= $request->full_name;
+        $messages->user_name =$request->user_name;
+        $messages->email =$request->email;
+        $messages->content =$request->content;
+        return "your message sent sucssefully";
     }
+
 
     /**
      * Display the specified resource.
@@ -40,7 +47,7 @@ class MessageController extends Controller
     public function show(string $id)
     {
         $messages = Message::where('id', $id)->update(['flag' => 1]);
-        return view('showMessage',compact('messages')); 
+        return view('admin/showMessage',compact('messages')); 
     }
 
     /**
